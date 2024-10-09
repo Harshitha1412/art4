@@ -11,6 +11,25 @@
             background-color: #f9f9f9; /* Light background for the body */
         }
 
+        /* Navbar styles */
+        .navbar {
+            display: flex;
+            justify-content: space-around; /* Space out items evenly */
+            background-color: #333; /* Dark background for the navbar */
+            padding: 10px 0; /* Padding around the navbar */
+        }
+
+        .navbar a {
+            color: white; /* White text */
+            text-decoration: none; /* Remove underline */
+            padding: 10px 15px; /* Padding for links */
+            transition: background-color 0.3s; /* Transition for hover effect */
+        }
+
+        .navbar a:hover {
+            background-color: #575757; /* Darker background on hover */
+        }
+
         h1 {
             text-align: center;
         }
@@ -88,6 +107,16 @@
     </style>
 </head>
 <body>
+    
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="artworks.html">Artworks</a>
+        <a href="cart.html">Cart</a>
+        <a href="login.html">Login/Register</a>
+    </nav>
+
     <h1>About Art Gallery</h1>
     <section class="about-image-section">
         <img src="pattern1.jpg" alt="Art Gallery" class="about-image" />
