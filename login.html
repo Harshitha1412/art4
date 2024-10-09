@@ -13,6 +13,30 @@
             height: 100vh; /* Full height */
         }
 
+        /* Navbar Styles */
+        .navbar {
+            display: flex; /* Flex layout for navbar */
+            justify-content: space-between; /* Space out items */
+            align-items: center; /* Center items vertically */
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            padding: 10px 20px; /* Padding for the navbar */
+            position: fixed; /* Fixed at the top */
+            width: 100%; /* Full width */
+            top: 0; /* Stick to the top */
+            z-index: 1000; /* Ensure it is above other elements */
+        }
+
+        .navbar a {
+            color: white; /* Text color */
+            text-decoration: none; /* Remove underline */
+            margin: 0 15px; /* Space between links */
+            font-size: 16px; /* Font size for links */
+        }
+
+        .navbar a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+
         .login-container {
             display: flex;
             flex-direction: column;
@@ -20,6 +44,7 @@
             justify-content: center; /* Center items vertically */
             height: 93vh; /* Change height to auto */
             padding: 20px;
+            margin-top: 60px; /* Ensure it doesn't overlap with navbar */
         }
 
         .login-container form {
@@ -128,6 +153,20 @@
     </style>
 </head>
 <body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <a href="/">Art Gallery</a>
+        </div>
+        <div class="nav-links">
+            <a href="/home.html">Home</a>
+            <a href="/gallery.html">Gallery</a>
+            <a href="/about.html">About</a>
+            <a href="/contact.html">Contact</a>
+            <a href="/login.html" style="color: lightblue;">Login</a>
+        </div>
+    </div>
+
     <div class="login-container">
         <form>
             <h2>Login</h2>
