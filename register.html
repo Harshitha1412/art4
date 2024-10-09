@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="styles/Register.css"> <!-- Ensure the CSS path is correct -->
+</head>
+<body>
+    <div class="register-container">
+        <h2>Register</h2>
+        <form>
+            <div class="input-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" style="background-color: white; color: black;" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" style="background-color: white; color: black;" required>
+            </div>
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" style="background-color: white; color: black;" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" style="background-color: white; color: black;" required>
+            </div>
+            <div class="input-group">
+                <label for="role">Role</label>
+                <select id="role" name="role" style="background-color: white; color: black;">
+                    <option value="ADMIN">Admin</option>
+                    <option value="ARTIST">Artist</option>
+                    <option value="VISITOR" selected>Visitor</option>
+                    <option value="CURATOR">Curator</option>
+                </select>
+            </div>
+            <button type="submit">
+                <span style="font-weight: bold;">REGISTER</span>
+            </button>
+            <p style="color: red;" id="error-message"></p>
+            <p style="margin-top: 10px; color: white;">
+                Already have an account? <a href="/login" style="color: lightblue;">Login here</a>
+            </p>
+        </form>
+    </div>
+
+    <script>
+        // You can include JavaScript for validation and dynamic behavior here.
+        // Example:
+        const form = document.querySelector('form');
+        const errorMessage = document.getElementById('error-message');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                errorMessage.textContent = 'Invalid email format';
+                return;
+            }
+
+            // Password validation
+            const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if (!passwordRegex.test(password)) {
+                errorMessage.textContent = 'Password must be at least 8 characters, include one uppercase letter, one number, and one special character.';
+                return;
+            }
+
+            // Submit the form if validations pass (you can handle the actual submission here)
+            errorMessage.textContent = '';
+            alert('Form submitted successfully!');
+        });
+    </script>
+</body>
+</html>
