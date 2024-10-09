@@ -14,6 +14,36 @@
             padding: 0; /* Remove default padding */
         }
 
+        /* Navbar styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between; /* Space between items */
+            align-items: center; /* Center items vertically */
+            background-color: #1f1f1f; /* Darker background for navbar */
+            padding: 10px 20px; /* Padding for navbar */
+        }
+
+        .navbar-brand {
+            font-size: 24px; /* Bigger font for the brand */
+            font-weight: bold; /* Bold font for emphasis */
+            color: white; /* Brand text color */
+        }
+
+        .navbar-links {
+            display: flex; /* Flex for the links */
+        }
+
+        .navbar-links a {
+            color: white; /* White links */
+            text-decoration: none; /* Remove underline from links */
+            margin: 0 15px; /* Space between links */
+            transition: color 0.3s; /* Smooth color change */
+        }
+
+        .navbar-links a:hover {
+            color: #ffcc00; /* Change color on hover */
+        }
+
         /* Carousel styles */
         .carousel {
             width: 100%;
@@ -88,6 +118,18 @@
     </style>
 </head>
 <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-brand">Art Gallery</div>
+        <div class="navbar-links">
+            <a href="index.html">Home</a>
+            <a href="artworks.html">Artworks</a>
+            <a href="cart.html">Cart</a>
+            <a href="about.html">About</a>
+            <a href="login.html">Login/Register</a>
+        </div>
+    </nav>
+
     <div>
         <!-- Existing Carousel -->
         <div class="carousel">
