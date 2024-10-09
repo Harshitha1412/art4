@@ -5,30 +5,141 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" href="styles/Register.css"> <!-- Ensure the CSS path is correct -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('img1.jpg') no-repeat center center/cover; /* Adjusted path for background image */
+            height: 100vh; /* Full height */
+            display: flex; /* Flex layout to center content */
+            flex-direction: column; /* Column layout */
+            align-items: center; /* Center items horizontally */
+            justify-content: center; /* Center items vertically */
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            display: flex; /* Flex layout for navbar */
+            justify-content: space-between; /* Space out items */
+            align-items: center; /* Center items vertically */
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            padding: 10px 20px; /* Padding for the navbar */
+            position: fixed; /* Fixed at the top */
+            width: 100%; /* Full width */
+            top: 0; /* Stick to the top */
+            z-index: 1000; /* Ensure it is above other elements */
+        }
+
+        .navbar a {
+            color: white; /* Text color */
+            text-decoration: none; /* Remove underline */
+            margin: 0 15px; /* Space between links */
+            font-size: 16px; /* Font size for links */
+        }
+
+        .navbar a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+
+        .register-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center items horizontally */
+            justify-content: center; /* Center items vertically */
+            height: auto; /* Auto height */
+            padding: 20px;
+            margin-top: 80px; /* Ensure it doesn't overlap with navbar */
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white background for contrast */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+            width: 90%; /* Responsive width */
+            max-width: 400px; /* Max width for the container */
+        }
+
+        h2 {
+            color: black; /* Heading color */
+        }
+
+        .input-group {
+            margin-bottom: 15px; /* Space between input groups */
+            width: 100%; /* Full width inputs */
+        }
+
+        .input-group label {
+            color: black; /* Label color */
+        }
+
+        input, select {
+            background-color: white; /* Input background color */
+            color: black; /* Input text color */
+            padding: 10px; /* Padding inside inputs */
+            border: 1px solid #000; /* Black border */
+            border-radius: 4px; /* Rounded corners for inputs */
+            width: 100%; /* Full width inputs */
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+
+        button {
+            padding: 10px 15px; /* Button padding */
+            background-color: #F1C40F; /* Button color */
+            border: none; /* No border */
+            border-radius: 4px; /* Rounded corners */
+            color: black; /* Text color */
+            cursor: pointer; /* Pointer cursor on hover */
+            width: 100%; /* Full width button */
+        }
+
+        button:hover {
+            background-color: #e1b20f; /* Darker yellow on hover */
+        }
+
+        p {
+            color: black; /* Text color */
+        }
+
+        .error-message {
+            color: red; /* Color for error messages */
+        }
+    </style>
 </head>
 <body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <a href="/">Art Gallery</a>
+        </div>
+        <div class="nav-links">
+            <a href="/home.html">Home</a>
+            <a href="/gallery.html">Gallery</a>
+            <a href="/about.html">About</a>
+            <a href="/contact.html">Contact</a>
+            <a href="/login.html" style="color: lightblue;">Login</a>
+        </div>
+    </div>
+
     <div class="register-container">
         <h2>Register</h2>
         <form>
             <div class="input-group">
                 <label for="name">Name</label>
-                <input type="text" id="name" name="name" style="background-color: white; color: black;" required>
+                <input type="text" id="name" name="name" required>
             </div>
             <div class="input-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" style="background-color: white; color: black;" required>
+                <input type="email" id="email" name="email" required>
             </div>
             <div class="input-group">
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" style="background-color: white; color: black;" required>
+                <input type="text" id="username" name="username" required>
             </div>
             <div class="input-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" style="background-color: white; color: black;" required>
+                <input type="password" id="password" name="password" required>
             </div>
             <div class="input-group">
                 <label for="role">Role</label>
-                <select id="role" name="role" style="background-color: white; color: black;">
+                <select id="role" name="role">
                     <option value="ADMIN">Admin</option>
                     <option value="ARTIST">Artist</option>
                     <option value="VISITOR" selected>Visitor</option>
@@ -38,8 +149,8 @@
             <button type="submit">
                 <span style="font-weight: bold;">REGISTER</span>
             </button>
-            <p style="color: red;" id="error-message"></p>
-            <p style="margin-top: 10px; color: white;">
+            <p class="error-message" id="error-message"></p>
+            <p style="margin-top: 10px;">
                 Already have an account? <a href="/login" style="color: lightblue;">Login here</a>
             </p>
         </form>
@@ -47,7 +158,6 @@
 
     <script>
         // You can include JavaScript for validation and dynamic behavior here.
-        // Example:
         const form = document.querySelector('form');
         const errorMessage = document.getElementById('error-message');
 
