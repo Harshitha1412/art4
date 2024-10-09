@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9; /* Light background for the body */
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .cart-items {
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            gap: 20px; /* Space between items */
+        }
+        
+        .cart-item {
+            display: flex;
+            border: 1px solid #ccc; /* Border for each item */
+            border-radius: 5px; /* Rounded corners */
+            padding: 10px; /* Padding inside each item */
+            align-items: center; /* Center content vertically */
+            background-color: white; /* White background for items */
+        }
+        
+        .cart-item-image {
+            width: 200px; /* Set width for square images */
+            height: 200px; /* Set height to match width */
+            object-fit: cover; /* Ensure the image covers the area without distortion */
+            margin-right: 20px; /* Space between image and text */
+        }
+        
+        .cart-item-details {
+            flex-grow: 1; /* Allow details to take up available space */
+        }
+        
+        .cart-item button {
+            background-color: #ff4f4f; /* Red button */
+            color: white; /* White text */
+            border: none; /* No border */
+            padding: 10px; /* Padding for the button */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+        }
+        
+        .cart-item button:hover {
+            background-color: #ff0000; /* Darker red on hover */
+        }
+        
+        .empty-cart {
+            text-align: center; /* Center the empty cart message */
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    <div id="cart-container">
+        <p class="empty-cart">Your cart is empty.</p>
+    </div>
+
+    <script>
+        const cartItems = [
+            { id: 1, artist: 'Lord Ganesha Oil Paint', cost: '$11000', imageUrl: 'god1.jpg' },
+            { id: 2, artist: 'Vishnu and Lakshmi: The Cosmic Balance', cost: '$22900', imageUrl: 'god2.jpg' },
+            { id: 3, artist: 'Radha and Krishna in a Serene Embrace', cost: '$13350', imageUrl: 'god3.jpg' },
+            // Add more items as needed
+        ];
+
+        const cartContainer = document.getElementById('cart-container');
+
+        if (cartItems.length === 0) {
+            cartContainer.innerHTML = '<p class="empty-cart">Your cart is empty.</p>';
+        } else {
+            cartItems.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <img src="${item.imageUrl}" alt="${item.artist}" class="cart-item-image" />
+                    <div class="cart-item-details">
+                        <h2>${item.artist}</h2>
+                        <p>Cost: ${item.cost}</p>
+                        <button onclick="removeFromCart(${item.id})">Remove from Cart</button>
+                    </div>
+                `;
+                cartContainer.appendChild(cartItem);
+            });
+        }
+
+        function removeFromCart(itemId) {
+            const updatedItems = cartItems.filter(item => item.id !== itemId);
+            cartContainer.innerHTML = ''; // Clear the container
+
+            if (updatedItems.length === 0) {
+                cartContainer.innerHTML = '<p class="empty-cart">Your cart is empty.</p>';
+            } else {
+                updatedItems.forEach(item => {
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'cart-item';
+                    cartItem.innerHTML = `
+                        <img src="${item.imageUrl}" alt="${item.artist}" class="cart-item-image" />
+                        <div class="cart-item-details">
+                            <h2>${item.artist}</h2>
+                            <p>Cost: ${item.cost}</p>
+                            <button onclick="removeFromCart(${item.id})">Remove from Cart</button>
+                        </div>
+                    `;
+                    cartContainer.appendChild(cartItem);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
