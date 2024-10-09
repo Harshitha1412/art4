@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artwork List</title>
+    <link rel="stylesheet" href="styles/ArtworkList.css"> <!-- Ensure this path is correct -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9; /* Light background for the body */
+        }
+
+        .artwork-list {
+            padding: 20px;
+            text-align: center; /* Center the heading */
+        }
+
+        .artwork-container {
+            display: flex; /* Use Flexbox */
+            flex-wrap: wrap; /* Allow wrapping to the next line */
+            justify-content: space-between; /* Space out items evenly */
+        }
+
+        .artwork-item {
+            width: calc(25% - 20px); /* Set width to one-fourth, minus margins */
+            margin: 10px; /* Margin around each item */
+            border: 1px solid #ccc; /* Optional border */
+            border-radius: 8px; /* Rounded corners */
+            padding: 10px; /* Padding inside each item */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow effect */
+            transition: transform 0.2s; /* Smooth hover effect */
+            background-color: rgba(255, 255, 255, 0.8); /* Light background for all items */
+            color: black; /* Default text color */
+            display: flex; /* Flex to arrange items */
+            flex-direction: column; /* Arrange items in a column */
+            align-items: center; /* Center content horizontally */
+        }
+
+        .artwork-item:hover {
+            transform: scale(1.05); /* Slightly scale up on hover */
+        }
+
+        .artwork-item img {
+            width: 100%; /* Ensure the image takes full width of the item */
+            height: 200px; /* Set a fixed height to maintain uniformity */
+            object-fit: cover; /* Maintain aspect ratio and cover the container */
+            border-radius: 4px; /* Rounded corners for images */
+        }
+
+        /* Button styles */
+        .cart-button {
+            background-color: #28a745; /* Green background for the button */
+            color: white; /* White text */
+            border: none; /* No border */
+            padding: 10px 15px; /* Padding for button */
+            border-radius: 4px; /* Rounded corners for button */
+            cursor: pointer; /* Pointer cursor on hover */
+            margin-top: 10px; /* Space above the button */
+        }
+
+        .cart-button:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="artwork-list">
+        <h1>Artworks</h1>
+        <div class="artwork-container" id="artwork-container">
+            <!-- Artwork items will be dynamically added here -->
+        </div>
+    </div>
+
+    <script>
+        const artworks = [
+            { id: 1, artist: 'Lord Ganesha Oil Paint', cost: '$11000', imageUrl: 'god1.jpg' },
+            { id: 2, artist: 'Vishnu and Lakshmi: The Cosmic Balance', cost: '$22900', imageUrl: 'god2.jpg' },
+            { id: 3, artist: 'Radha and Krishna in a Serene Embrace', cost: '$13350', imageUrl: 'god3.jpg' },
+            { id: 4, artist: 'Vigorous Fight With Enemy On Elephant', cost: '$20000', imageUrl: 'art2.jpg' },
+            { id: 5, artist: 'Modern Art of Woman', cost: '$36600', imageUrl: 'paint2.jpg' },
+            { id: 6, artist: 'The Woman and Her Bird', cost: '$18000', imageUrl: 'god4.jpg' },
+        ];
+
+        const artworkContainer = document.getElementById('artwork-container');
+
+        artworks.forEach(artwork => {
+            const artworkItem = document.createElement('div');
+            artworkItem.className = 'artwork-item';
+            artworkItem.innerHTML = `
+                <img src="${artwork.imageUrl}" alt="${artwork.artist}">
+                <h2>${artwork.artist}</h2>
+                <p>Cost: ${artwork.cost}</p>
+                <button class="cart-button" onclick="alert('Added to cart: ${artwork.artist}')">Add to Cart</button>
+            `;
+            artworkContainer.appendChild(artworkItem);
+        });
+    </script>
+</body>
+</html>
