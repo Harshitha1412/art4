@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Gallery</title>
+    <style>
+        /* General body styling */
+        body {
+            background-color: white; /* Background color */
+            color: black; /* Text color */
+            font-family: Arial, sans-serif; /* Font style */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+
+        /* Carousel styles */
+        .carousel {
+            width: 100%;
+            height: 300px; /* Height of carousel */
+            overflow: hidden; /* Hide overflow */
+            position: relative; /* Positioning for carousel items */
+        }
+
+        .carousel-item {
+            width: 100%;
+            height: 100%;
+            position: absolute; /* Overlapping items */
+            transition: opacity 1s ease; /* Smooth transition */
+        }
+
+        .carousel-item img {
+            width: 100%; /* Full width for images */
+            height: 100%; /* Full height for images */
+            object-fit: cover; /* Cover the container */
+        }
+
+        /* Card styles */
+        .main {
+            position: relative;
+            margin: 20px auto; /* Center the card section */
+            display: flex; /* Flex layout for cards */
+            flex-wrap: wrap; /* Allow wrapping for smaller screens */
+            justify-content: center; /* Center cards */
+        }
+
+        .card {
+            width: 150px; /* Fixed width for square cards */
+            height: 150px; /* Fixed height for square cards */
+            background-color: #252525; /* Dark background for the card */
+            margin: 10px; /* Space between items */
+            border-radius: 7px; /* Rounded corners */
+            overflow: hidden; /* Hide overflow for images */
+            display: flex; /* Flex to center the image */
+        }
+
+        /* Ensure Images are contained within the Items */
+        .card img {
+            width: 100%; /* Full width of the card */
+            height: 100%; /* Full height of the card */
+            object-fit: cover; /* Cover the container without distortion */
+            border-radius: 7px; /* Match card's border radius */
+        }
+
+        /* New Arrivals Section */
+        .new-arrivals-section {
+            width: 100%; /* Full width of the container */
+            padding: 40px 20px; /* Padding around the section */
+            background-color: #f9f9f9; /* Light background to differentiate the section */
+            text-align: center; /* Center-align any headings or text */
+        }
+
+        /* Section Heading */
+        .new-arrivals-section h2 {
+            font-size: 2rem; /* Font size for heading */
+            font-weight: bold; /* Bold heading */
+            color: #333; /* Dark color for contrast */
+            margin-bottom: 20px; /* Spacing below the heading */
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            .card {
+                width: 100px; /* Adjusted width for smaller screens */
+                height: 100px; /* Adjusted height for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <!-- Existing Carousel -->
+        <div class="carousel">
+            <div class="carousel-item" style="opacity: 1;">
+                <img src="art1.jpg" alt="Artwork 1" />
+            </div>
+            <div class="carousel-item" style="opacity: 0;">
+                <img src="art2.jpg" alt="Artwork 2" />
+            </div>
+            <div class="carousel-item" style="opacity: 0;">
+                <img src="god3.jpg" alt="Artwork 3" />
+            </div>
+        </div>
+
+        <h1 style="text-align: center;">Welcome to the Art Gallery</h1>
+        <p style="text-align: center;">
+            Explore a stunning collection of contemporary and classical artworks. 
+            Login or Register to curate your own gallery, save favorites, and discover the artists behind each masterpiece.
+        </p>
+
+        <!-- New Arrivals Section -->
+        <div class="new-arrivals-section">
+            <h2>New Arrivals</h2>
+            <div class="main">
+                <div class="card">
+                    <img src="art1.jpg" alt="New Arrival 1" />
+                </div>
+                <div class="card">
+                    <img src="art2.jpg" alt="New Arrival 2" />
+                </div>
+                <div class="card">
+                    <img src="god3.jpg" alt="New Arrival 3" />
+                </div>
+                <div class="card">
+                    <img src="god1.jpg" alt="New Arrival 4" />
+                </div>
+                <div class="card">
+                    <img src="god2.jpg" alt="New Arrival 5" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for Carousel Functionality
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        let current = 0;
+
+        setInterval(() => {
+            carouselItems[current].style.opacity = 0; // Hide current item
+            current = (current + 1) % carouselItems.length; // Move to the next item
+            carouselItems[current].style.opacity = 1; // Show next item
+        }, 3000);
+    </script>
+</body>
+</html>
